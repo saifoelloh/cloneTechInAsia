@@ -45,7 +45,11 @@ export default class Kartu extends React.Component {
                         }
                     </Grid>
                     ) : (
-                        <CircularProgress style={{ color: purple[500], align:"center" }} thickness={7} />
+                        <Grid container alignItems="center">
+                            <Grid item >
+                                <CircularProgress style={{ color: purple[500] }} thickness={7} />
+                            </Grid>
+                        </Grid>
                     )
                 }
             </Aux>

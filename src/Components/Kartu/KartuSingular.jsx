@@ -21,15 +21,15 @@ const styles = {
 const KartuSingular = (props) => {
     const { classes } = props;
     return (
-        <Grid container >
-            <Grid md={4} sm={12}>
+        <Grid container style={{paddingRight:"5%", paddingLeft:"5%"}}>
+            <Grid item md={4} sm={12}>
                 <CardMedia
                     className={classes.media}
                     image={props.data.seo.image}
-                    title=""
+                    title={props.data.seo.title}
                 />
             </Grid>
-            <Grid md={8} sm={12}>
+            <Grid item md={8} sm={12}>
                 <CardContent>
                     <Typography gutterBottom variant="headline" component="h2">
                         {props.data.seo.title}
@@ -37,6 +37,7 @@ const KartuSingular = (props) => {
                     <Typography component="p">
                         {props.data.seo.description}
                     </Typography>
+                    <hr />
                 </CardContent>
             </Grid>
         </Grid>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
@@ -33,8 +34,14 @@ class Bottom extends React.Component {
                 className={classes.root}
                 style={{width:"100%",bottom:"0px",position:"fixed"}}
             >
-                <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-                <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+                <BottomNavigationAction
+                    component={Link}
+                    to="/"
+                    label="Recents" icon={<RestoreIcon />} />
+                <BottomNavigationAction
+                    component={Link}
+                    to="/BeritaDetail"
+                    label="Favorites" icon={<FavoriteIcon />} />
                 <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
             </BottomNavigation>
         );
@@ -42,4 +49,3 @@ class Bottom extends React.Component {
 }
 
 export default withStyles(styles)(Bottom);
-
