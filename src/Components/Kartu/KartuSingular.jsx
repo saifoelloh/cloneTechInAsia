@@ -50,7 +50,7 @@ const KartuSingular = (props) => {
                     </Grid>
                     <Grid item >
                         <Tombol
-                            onClick={()=>{props.beritaHandler({key})}}
+                            onClick={()=>{props.ubahHandler(key)}}
                             alignItems="right"
                             variant="outlined" color="primary">
                             Read more..

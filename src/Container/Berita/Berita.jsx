@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Axios from 'axios'
 import Grid from '@material-ui/core/Grid';
-import Kartu from '../../Components/Kartu/Kartu.jsx'
+import KartuSingular from '../../Components/Kartu/KartuSingular.jsx'
 import Aux from '../../hoc/Auxiliary.jsx'
 import Loading from '../../Components/Loading/Loading.jsx'
 
@@ -17,12 +17,13 @@ class Berita extends Component {
                 alignItems: "center",
                 justify: "center",
             },
-            berita: "bb"
+            berita: -1
         }
+        this.beritaHandler = this.beritaHandler.bind(this)
     }
 
     beritaHandler = (datum) => {
-        console.log(datum,">>>>>>>>>");
+        console.log(datum);
         this.setState({
             berita: datum
         })
@@ -46,7 +47,13 @@ class Berita extends Component {
                 { this.state.loading ? (
                     <Grid container >
                         <Grid item md={9} sm={12} >
-                            <Kartu data={this.state.data} beritaHandler={()=>{this.beritaHandler()}} />
+                            { this.state.data.map( ( datum, key ) => {
+                                return (
+                                    <div>
+                                        <KartuSingular data={datum} ubahHandler={()=>{this.beritaHandler()}}  kunci={key}/>
+                                    </div>
+                                )})
+                            }
                         </Grid>
                         <Grid item md={3} sm={12}>
                         </Grid>
