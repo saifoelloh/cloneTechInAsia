@@ -1,43 +1,56 @@
 import React, {Component} from 'react';
+import Axios from 'axios'
 import Grid from '@material-ui/core/Grid';
 import Kartu from '../../Components/Kartu/Kartu.jsx'
+import Aux from '../../hoc/Auxiliary.jsx'
+import Loading from '../../Components/Loading/Loading.jsx'
 
-export default class Berita extends Component {
+class Berita extends Component {
+
     state = {
+        data: [],
+        loading: false,
         gaya: {
             direction: "row",
             alignItems: "center",
             justify: "center",
-        }
-        data: [],
-        loading: false
+        },
     }
 
     componentDidMount() {
-        Axios.get("")
+        Axios.get("https://id.techinasia.com/wp-json/techinasia/3.0/posts?page=1&per_page=15/comment")
             .then( response => {
+                console.log(response);
                 this.setState({
-                    data: response.data.post,
-                    loading: true
+                    loading: true,
+                    data: response.data.posts
                 })
             })
     }
+
     render() {
         const { alignItems, direction, justify } = this.state.gaya
         return (
-            <Grid
-                contaner
-                alignItems={alignItems}>
+            <Aux>
                 { this.state.loading ? (
-                    <Grid item md={9} sm={12} >
-                        <Kartu data={data} />
-                    </Grid>
-                    <Grid item md={3} sm={12}>
+                    <Grid
+                        contaner
+                        alignItems={alignItems}>
+                        <Grid item md={9} sm={12} >
+                            <Kartu data={this.state.data} />
+                        </Grid>
+                        <Grid item md={3} sm={12}>
+                        </Grid>
                     </Grid>
                 ) : (
-                    <Loading type='ball_triangle' width={100} height={100} fill='#f44242' />
+                    <Grid container >
+                        <Grid item alignItems="center">
+                            <Loading alignItems="center" />
+                        </Grid>
+                    </Grid>
                 )}
-            </Grid>
-        );
+            </Aux>
+        )
     }
 }
+export default Berita

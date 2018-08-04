@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import { Container } from 'reactstrap'
-import Axios from 'axios'
+import Aux from './hoc/Auxiliary.jsx'
+import Header from './Components/Header/Header.jsx'
 import Bottom from './Components/Bottom/Bottom.jsx'
 import Berita from './Container/Berita/Berita.jsx'
-import BeritaDetail from './Container/BeritaDetail/BeritaDetai.jsx'
+import BeritaDetail from './Container/BeritaDetail/BeritaDetail.jsx'
 
 class App extends Component {
-
     render() {
         return (
-            <Container>
+            <Aux>
+                <Header />
                 <Switch>
                     <Route path="/" component={Berita} exact={true} />
                     <Route path="/BeritaDetail" component={BeritaDetail} />
                 </Switch>
-                <Bottom />
-            </Container>
+            </Aux>
         );
     }
 }
