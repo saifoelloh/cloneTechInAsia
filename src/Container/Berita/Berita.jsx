@@ -7,14 +7,25 @@ import Loading from '../../Components/Loading/Loading.jsx'
 
 class Berita extends Component {
 
-    state = {
-        data: [],
-        loading: false,
-        gaya: {
-            direction: "row",
-            alignItems: "center",
-            justify: "center",
-        },
+    constructor() {
+        super();
+        this.state = {
+            data: [],
+            loading: false,
+            gaya: {
+                direction: "row",
+                alignItems: "center",
+                justify: "center",
+            },
+            berita: "bb"
+        }
+    }
+
+    beritaHandler = (datum) => {
+        console.log(datum,">>>>>>>>>");
+        this.setState({
+            berita: datum
+        })
     }
 
     componentDidMount() {
@@ -33,11 +44,9 @@ class Berita extends Component {
         return (
             <Aux>
                 { this.state.loading ? (
-                    <Grid
-                        contaner
-                        alignItems={alignItems}>
+                    <Grid container >
                         <Grid item md={9} sm={12} >
-                            <Kartu data={this.state.data} />
+                            <Kartu data={this.state.data} beritaHandler={()=>{this.beritaHandler()}} />
                         </Grid>
                         <Grid item md={3} sm={12}>
                         </Grid>

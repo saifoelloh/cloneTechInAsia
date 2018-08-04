@@ -6,10 +6,11 @@ import Aux from '../../hoc/Auxiliary.jsx'
 const Kartu = props => {
     return (
         <Aux>
-            { props.data.map( datum => {
+            { props.data.map( ( datum, key ) => {
                 return (
                     <Grid item md={12} xs={12}>
-                        <KartuSingular data={datum} />
+                        <KartuSingular data={datum} beritaHandler={()=>{props.beritaHandler(props.berita)}} kunci={key} />
+                        {console.log(props.berita)}
                     </Grid>
                 )
             })}

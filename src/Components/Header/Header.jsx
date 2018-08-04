@@ -25,7 +25,7 @@ function ButtonAppBar(props) {
     const { classes } = props;
     return (
         <div className={classes.root} style={{marginBottom:"10%"}}>
-            <AppBar positionSticky >
+            <AppBar position="fixed" >
                 <Toolbar>
                     <Typography variant="title" color="inherit" className={classes.flex}>
                         <Button style={{color:"white"}}>
