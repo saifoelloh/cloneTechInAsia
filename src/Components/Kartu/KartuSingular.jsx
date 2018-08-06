@@ -23,7 +23,6 @@ const styles = {
 const KartuSingular = (props) => {
     const { classes } = props
     const key = props.kunci
-    console.log(key);
     return (
         <Grid container style={{paddingRight:"5%", paddingLeft:"5%", marginBottom: "2%", marginTop: "2%"}} spacing={24}>
             <Grid item md={4} sm={12}>
